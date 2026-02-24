@@ -1,8 +1,9 @@
 <!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PANKAJ BHARDWAJ OFFICIAL™</title>
-  <!-- Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANKAJ BHARDWAJ OFFICIAL™</title>
+
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -12,12 +13,15 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 fbq('init', '1375967337173631');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1375967337173631&ev=PageView&noscript=1"
-/></noscript>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1375967337173631&ev=PageView&noscript=1"/>
+</noscript>
 <!-- End Meta Pixel Code -->
     <!-- Inline Critical CSS -->
     <style>
@@ -313,7 +317,7 @@ src="https://www.facebook.com/tr?id=1375967337173631&ev=PageView&noscript=1"
                     <div class="logo">
                         <img id="logo-image" src="Pankaj.jpg" alt="Educational Channel Logo" loading="lazy">
                     </div>
-                    <a id="telegram-link" onclick="trackSubscribe()" class="cta" href="#">Join Free Telegram</a>
+                   <a id="telegram-link" onclick="trackSubscribe(event)" class="cta" href="#">Join Free Telegram</a>
                     <div class="feature-card">
                        <p class="blue"><span class="emoji">📞</span> Daily Free Nifty, Banknifty, Stock Calls! 📈🔔</p>
                     </div>
@@ -333,23 +337,38 @@ src="https://www.facebook.com/tr?id=1375967337173631&ev=PageView&noscript=1"
             </div>
         </div>
     </section>
-    <script>
-        const config = {
-            pageName: "PANKAJ BHARDWAJ OFFICIAL™",
-            telegramLink: "https://t.me/+a4rs1Zz9oT5kYTU1",
-            imageSrc: "Pankaj.jpg"
-        };
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('page-name').textContent = config.pageName;
-            document.getElementById('logo-image').src = config.imageSrc;
-            document.getElementById('telegram-link').href = config.telegramLink;
-        });
-    </script>
+ <script>
+const config = {
+    pageName: "PANKAJ BHARDWAJ OFFICIAL™",
+    telegramLink: "https://t.me/+a4rs1Zz9oT5kYTU1",
+    imageSrc: "Pankaj.jpg"
+};
 
-        <script>
-        function trackSubscribe() {
-            fbq('track', 'Subscribe');
-        }
-    </script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('page-name').textContent = config.pageName;
+    document.getElementById('logo-image').src = config.imageSrc;
+    document.getElementById('telegram-link').href = config.telegramLink;
+});
+
+function trackSubscribe(event) {
+    event.preventDefault();
+
+    const telegramUrl = config.telegramLink;
+
+    if (localStorage.getItem('telegram_subscribed') === 'true') {
+        window.open(telegramUrl, "_blank");
+        return;
+    }
+
+    if (typeof fbq === "function") {
+        fbq('track', 'Subscribe');
+        localStorage.setItem('telegram_subscribed', 'true');
+    }
+
+    setTimeout(function() {
+        window.open(telegramUrl, "_blank");
+    }, 400);
+}
+</script>
 
 </body></html>
